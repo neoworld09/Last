@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDocvehiculoTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="DocvehiculoListForm">
+                <p:panel header="#{bundle.ListDocvehiculoTitle}">
+                    <p:dataTable id="datalist" value="#{docvehiculoController.items}" var="item"
+                                 selectionMode="single" selection="#{docvehiculoController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.iddocvehiculo}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocvehiculoTitle_iddocvehiculo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.iddocvehiculo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocvehiculoTitle_soat}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.soat}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocvehiculoTitle_revTecnomecanica}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.revTecnomecanica}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocvehiculoTitle_perCirculacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.perCirculacion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocvehiculoTitle_idtarjetapropiedad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idtarjetapropiedad}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocvehiculoTitle_vehiculoMatricula}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vehiculoMatricula}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{docvehiculoController.prepareCreate}" update=":DocvehiculoCreateForm" oncomplete="PF('DocvehiculoCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":DocvehiculoViewForm" oncomplete="PF('DocvehiculoViewDialog').show()" disabled="#{empty docvehiculoController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":DocvehiculoEditForm" oncomplete="PF('DocvehiculoEditDialog').show()" disabled="#{empty docvehiculoController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{docvehiculoController.destroy}" update=":growl,datalist" disabled="#{empty docvehiculoController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="NotificacionEditDlg" widgetVar="NotificacionEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditNotificacionTitle}">
+            <h:form id="NotificacionEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{notificacionController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditNotificacionLabel_idnoti}" for="idnoti" />
+                        <p:inputText id="idnoti" value="#{notificacionController.selected.idnoti}" title="#{bundle.EditNotificacionTitle_idnoti}" required="true" requiredMessage="#{bundle.EditNotificacionRequiredMessage_idnoti}"/>
+                        <p:outputLabel value="#{bundle.EditNotificacionLabel_tiponotificacionIdtiponotificacion}" for="tiponotificacionIdtiponotificacion" />
+                        <p:inputText id="tiponotificacionIdtiponotificacion" value="#{notificacionController.selected.tiponotificacionIdtiponotificacion}" title="#{bundle.EditNotificacionTitle_tiponotificacionIdtiponotificacion}" required="true" requiredMessage="#{bundle.EditNotificacionRequiredMessage_tiponotificacionIdtiponotificacion}"/>
+                        <p:outputLabel value="#{bundle.EditNotificacionLabel_cuerponotificacionIdcuerponotificacion}" for="cuerponotificacionIdcuerponotificacion" />
+                        <p:inputText id="cuerponotificacionIdcuerponotificacion" value="#{notificacionController.selected.cuerponotificacionIdcuerponotificacion}" title="#{bundle.EditNotificacionTitle_cuerponotificacionIdcuerponotificacion}" required="true" requiredMessage="#{bundle.EditNotificacionRequiredMessage_cuerponotificacionIdcuerponotificacion}"/>
+                        <p:outputLabel value="#{bundle.EditNotificacionLabel_terceroreceptor}" for="terceroreceptor" />
+                        <p:inputText id="terceroreceptor" value="#{notificacionController.selected.terceroreceptor}" title="#{bundle.EditNotificacionTitle_terceroreceptor}" />
+                        <p:outputLabel value="#{bundle.EditNotificacionLabel_fechaenvionoti}" for="fechaenvionoti" />
+                        <p:calendar id="fechaenvionoti" pattern="MM/dd/yyyy" value="#{notificacionController.selected.fechaenvionoti}" title="#{bundle.EditNotificacionTitle_fechaenvionoti}" required="true" requiredMessage="#{bundle.EditNotificacionRequiredMessage_fechaenvionoti}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditNotificacionLabel_tercerosIdtercero}" for="tercerosIdtercero" />
+                        <p:inputText id="tercerosIdtercero" value="#{notificacionController.selected.tercerosIdtercero}" title="#{bundle.EditNotificacionTitle_tercerosIdtercero}" required="true" requiredMessage="#{bundle.EditNotificacionRequiredMessage_tercerosIdtercero}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{notificacionController.update}" value="#{bundle.Save}" update="display,:NotificacionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'NotificacionEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="NotificacionEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

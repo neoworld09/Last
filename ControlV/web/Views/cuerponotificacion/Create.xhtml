@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CuerponotificacionCreateDlg" widgetVar="CuerponotificacionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCuerponotificacionTitle}">
+            <h:form id="CuerponotificacionCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cuerponotificacionController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCuerponotificacionLabel_idcuerponotificacion}" for="idcuerponotificacion" />
+                        <p:inputText id="idcuerponotificacion" value="#{cuerponotificacionController.selected.idcuerponotificacion}" title="#{bundle.CreateCuerponotificacionTitle_idcuerponotificacion}" required="true" requiredMessage="#{bundle.CreateCuerponotificacionRequiredMessage_idcuerponotificacion}"/>
+                        <p:outputLabel value="#{bundle.CreateCuerponotificacionLabel_concepto}" for="concepto" />
+                        <p:inputText id="concepto" value="#{cuerponotificacionController.selected.concepto}" title="#{bundle.CreateCuerponotificacionTitle_concepto}" required="true" requiredMessage="#{bundle.CreateCuerponotificacionRequiredMessage_concepto}"/>
+                        <p:outputLabel value="#{bundle.CreateCuerponotificacionLabel_adjunto}" for="adjunto" />
+                        <p:inputText id="adjunto" value="#{cuerponotificacionController.selected.adjunto}" title="#{bundle.CreateCuerponotificacionTitle_adjunto}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cuerponotificacionController.create}" value="#{bundle.Save}" update="display,:CuerponotificacionListForm:datalist,:growl" oncomplete="handleSubmit(args,'CuerponotificacionCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CuerponotificacionCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

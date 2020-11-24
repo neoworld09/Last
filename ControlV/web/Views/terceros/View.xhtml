@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TercerosViewDlg" widgetVar="TercerosViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTercerosTitle}">
+            <h:form id="TercerosViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tercerosController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTercerosLabel_idtercero}"/>
+                        <h:outputText value="#{tercerosController.selected.idtercero}" title="#{bundle.ViewTercerosTitle_idtercero}"/>
+                        <h:outputText value="#{bundle.ViewTercerosLabel_nombre}"/>
+                        <h:outputText value="#{tercerosController.selected.nombre}" title="#{bundle.ViewTercerosTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewTercerosLabel_apellido}"/>
+                        <h:outputText value="#{tercerosController.selected.apellido}" title="#{bundle.ViewTercerosTitle_apellido}"/>
+                        <h:outputText value="#{bundle.ViewTercerosLabel_email}"/>
+                        <h:outputText value="#{tercerosController.selected.email}" title="#{bundle.ViewTercerosTitle_email}"/>
+                        <h:outputText value="#{bundle.ViewTercerosLabel_teloficina}"/>
+                        <h:outputText value="#{tercerosController.selected.teloficina}" title="#{bundle.ViewTercerosTitle_teloficina}"/>
+                        <h:outputText value="#{bundle.ViewTercerosLabel_celular}"/>
+                        <h:outputText value="#{tercerosController.selected.celular}" title="#{bundle.ViewTercerosTitle_celular}"/>
+                        <h:outputText value="#{bundle.ViewTercerosLabel_tipoterceroIdtipoter}"/>
+                        <h:outputText value="#{tercerosController.selected.tipoterceroIdtipoter}" title="#{bundle.ViewTercerosTitle_tipoterceroIdtipoter}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TercerosViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

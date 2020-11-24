@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TipomovimientoCreateDlg" widgetVar="TipomovimientoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTipomovimientoTitle}">
+            <h:form id="TipomovimientoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tipomovimientoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTipomovimientoLabel_idtipomovimiento}" for="idtipomovimiento" />
+                        <p:inputText id="idtipomovimiento" value="#{tipomovimientoController.selected.idtipomovimiento}" title="#{bundle.CreateTipomovimientoTitle_idtipomovimiento}" required="true" requiredMessage="#{bundle.CreateTipomovimientoRequiredMessage_idtipomovimiento}"/>
+                        <p:outputLabel value="#{bundle.CreateTipomovimientoLabel_tiposalida}" for="tiposalida" />
+                        <p:inputText id="tiposalida" value="#{tipomovimientoController.selected.tiposalida}" title="#{bundle.CreateTipomovimientoTitle_tiposalida}" required="true" requiredMessage="#{bundle.CreateTipomovimientoRequiredMessage_tiposalida}"/>
+                        <p:outputLabel value="#{bundle.CreateTipomovimientoLabel_tipoingreso}" for="tipoingreso" />
+                        <p:inputText id="tipoingreso" value="#{tipomovimientoController.selected.tipoingreso}" title="#{bundle.CreateTipomovimientoTitle_tipoingreso}" required="true" requiredMessage="#{bundle.CreateTipomovimientoRequiredMessage_tipoingreso}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tipomovimientoController.create}" value="#{bundle.Save}" update="display,:TipomovimientoListForm:datalist,:growl" oncomplete="handleSubmit(args,'TipomovimientoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TipomovimientoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

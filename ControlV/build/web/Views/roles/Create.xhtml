@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RolesCreateDlg" widgetVar="RolesCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateRolesTitle}">
+            <h:form id="RolesCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{rolesController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateRolesLabel_idRoles}" for="idRoles" />
+                        <p:inputText id="idRoles" value="#{rolesController.selected.idRoles}" title="#{bundle.CreateRolesTitle_idRoles}" required="true" requiredMessage="#{bundle.CreateRolesRequiredMessage_idRoles}"/>
+                        <p:outputLabel value="#{bundle.CreateRolesLabel_rol}" for="rol" />
+                        <p:inputText id="rol" value="#{rolesController.selected.rol}" title="#{bundle.CreateRolesTitle_rol}" required="true" requiredMessage="#{bundle.CreateRolesRequiredMessage_rol}"/>
+                        <p:outputLabel value="#{bundle.CreateRolesLabel_descripcionTex}" for="descripcionTex" />
+                        <p:inputTextarea rows="4" cols="30" id="descripcionTex" value="#{rolesController.selected.descripcionTex}" title="#{bundle.CreateRolesTitle_descripcionTex}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{rolesController.create}" value="#{bundle.Save}" update="display,:RolesListForm:datalist,:growl" oncomplete="handleSubmit(args,'RolesCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="RolesCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

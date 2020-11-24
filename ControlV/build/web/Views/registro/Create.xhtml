@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RegistroCreateDlg" widgetVar="RegistroCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateRegistroTitle}">
+            <h:form id="RegistroCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{registroController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateRegistroLabel_idregistro}" for="idregistro" />
+                        <p:inputText id="idregistro" value="#{registroController.selected.idregistro}" title="#{bundle.CreateRegistroTitle_idregistro}" required="true" requiredMessage="#{bundle.CreateRegistroRequiredMessage_idregistro}"/>
+                        <p:outputLabel value="#{bundle.CreateRegistroLabel_tipomovimientoIdtipomovimiento}" for="tipomovimientoIdtipomovimiento" />
+                        <p:inputText id="tipomovimientoIdtipomovimiento" value="#{registroController.selected.tipomovimientoIdtipomovimiento}" title="#{bundle.CreateRegistroTitle_tipomovimientoIdtipomovimiento}" required="true" requiredMessage="#{bundle.CreateRegistroRequiredMessage_tipomovimientoIdtipomovimiento}"/>
+                        <p:outputLabel value="#{bundle.CreateRegistroLabel_horaFecha}" for="horaFecha" />
+                        <p:calendar id="horaFecha" pattern="MM/dd/yyyy HH:mm:ss" value="#{registroController.selected.horaFecha}" title="#{bundle.EditRegistroTitle_horaFecha}" required="true" requiredMessage="#{bundle.EditRegistroRequiredMessage_horaFecha}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateRegistroLabel_origen}" for="origen" />
+                        <p:inputText id="origen" value="#{registroController.selected.origen}" title="#{bundle.CreateRegistroTitle_origen}" required="true" requiredMessage="#{bundle.CreateRegistroRequiredMessage_origen}"/>
+                        <p:outputLabel value="#{bundle.CreateRegistroLabel_destino}" for="destino" />
+                        <p:inputText id="destino" value="#{registroController.selected.destino}" title="#{bundle.CreateRegistroTitle_destino}" required="true" requiredMessage="#{bundle.CreateRegistroRequiredMessage_destino}"/>
+                        <p:outputLabel value="#{bundle.CreateRegistroLabel_pesototal}" for="pesototal" />
+                        <p:inputText id="pesototal" value="#{registroController.selected.pesototal}" title="#{bundle.CreateRegistroTitle_pesototal}" />
+                        <p:outputLabel value="#{bundle.CreateRegistroLabel_vehiculoMatricula}" for="vehiculoMatricula" />
+                        <p:inputText id="vehiculoMatricula" value="#{registroController.selected.vehiculoMatricula}" title="#{bundle.CreateRegistroTitle_vehiculoMatricula}" required="true" requiredMessage="#{bundle.CreateRegistroRequiredMessage_vehiculoMatricula}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{registroController.create}" value="#{bundle.Save}" update="display,:RegistroListForm:datalist,:growl" oncomplete="handleSubmit(args,'RegistroCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="RegistroCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

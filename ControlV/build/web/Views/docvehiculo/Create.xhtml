@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DocvehiculoCreateDlg" widgetVar="DocvehiculoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateDocvehiculoTitle}">
+            <h:form id="DocvehiculoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{docvehiculoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateDocvehiculoLabel_iddocvehiculo}" for="iddocvehiculo" />
+                        <p:inputText id="iddocvehiculo" value="#{docvehiculoController.selected.iddocvehiculo}" title="#{bundle.CreateDocvehiculoTitle_iddocvehiculo}" required="true" requiredMessage="#{bundle.CreateDocvehiculoRequiredMessage_iddocvehiculo}"/>
+                        <p:outputLabel value="#{bundle.CreateDocvehiculoLabel_soat}" for="soat" />
+                        <p:inputText id="soat" value="#{docvehiculoController.selected.soat}" title="#{bundle.CreateDocvehiculoTitle_soat}" required="true" requiredMessage="#{bundle.CreateDocvehiculoRequiredMessage_soat}"/>
+                        <p:outputLabel value="#{bundle.CreateDocvehiculoLabel_revTecnomecanica}" for="revTecnomecanica" />
+                        <p:inputText id="revTecnomecanica" value="#{docvehiculoController.selected.revTecnomecanica}" title="#{bundle.CreateDocvehiculoTitle_revTecnomecanica}" required="true" requiredMessage="#{bundle.CreateDocvehiculoRequiredMessage_revTecnomecanica}"/>
+                        <p:outputLabel value="#{bundle.CreateDocvehiculoLabel_perCirculacion}" for="perCirculacion" />
+                        <p:inputText id="perCirculacion" value="#{docvehiculoController.selected.perCirculacion}" title="#{bundle.CreateDocvehiculoTitle_perCirculacion}" />
+                        <p:outputLabel value="#{bundle.CreateDocvehiculoLabel_idtarjetapropiedad}" for="idtarjetapropiedad" />
+                        <p:inputText id="idtarjetapropiedad" value="#{docvehiculoController.selected.idtarjetapropiedad}" title="#{bundle.CreateDocvehiculoTitle_idtarjetapropiedad}" required="true" requiredMessage="#{bundle.CreateDocvehiculoRequiredMessage_idtarjetapropiedad}"/>
+                        <p:outputLabel value="#{bundle.CreateDocvehiculoLabel_vehiculoMatricula}" for="vehiculoMatricula" />
+                        <p:inputText id="vehiculoMatricula" value="#{docvehiculoController.selected.vehiculoMatricula}" title="#{bundle.CreateDocvehiculoTitle_vehiculoMatricula}" required="true" requiredMessage="#{bundle.CreateDocvehiculoRequiredMessage_vehiculoMatricula}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{docvehiculoController.create}" value="#{bundle.Save}" update="display,:DocvehiculoListForm:datalist,:growl" oncomplete="handleSubmit(args,'DocvehiculoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DocvehiculoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

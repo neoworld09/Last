@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DocterceroCreateDlg" widgetVar="DocterceroCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateDocterceroTitle}">
+            <h:form id="DocterceroCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{docterceroController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateDocterceroLabel_iddoc}" for="iddoc" />
+                        <p:inputText id="iddoc" value="#{docterceroController.selected.iddoc}" title="#{bundle.CreateDocterceroTitle_iddoc}" required="true" requiredMessage="#{bundle.CreateDocterceroRequiredMessage_iddoc}"/>
+                        <p:outputLabel value="#{bundle.CreateDocterceroLabel_lictransito}" for="lictransito" />
+                        <p:inputText id="lictransito" value="#{docterceroController.selected.lictransito}" title="#{bundle.CreateDocterceroTitle_lictransito}" required="true" requiredMessage="#{bundle.CreateDocterceroRequiredMessage_lictransito}"/>
+                        <p:outputLabel value="#{bundle.CreateDocterceroLabel_fechaexplictransito}" for="fechaexplictransito" />
+                        <p:calendar id="fechaexplictransito" pattern="MM/dd/yyyy" value="#{docterceroController.selected.fechaexplictransito}" title="#{bundle.EditDocterceroTitle_fechaexplictransito}" required="true" requiredMessage="#{bundle.EditDocterceroRequiredMessage_fechaexplictransito}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateDocterceroLabel_fechaveclictransito}" for="fechaveclictransito" />
+                        <p:calendar id="fechaveclictransito" pattern="MM/dd/yyyy" value="#{docterceroController.selected.fechaveclictransito}" title="#{bundle.EditDocterceroTitle_fechaveclictransito}" required="true" requiredMessage="#{bundle.EditDocterceroRequiredMessage_fechaveclictransito}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateDocterceroLabel_iddocalimentos}" for="iddocalimentos" />
+                        <p:inputText id="iddocalimentos" value="#{docterceroController.selected.iddocalimentos}" title="#{bundle.CreateDocterceroTitle_iddocalimentos}" required="true" requiredMessage="#{bundle.CreateDocterceroRequiredMessage_iddocalimentos}"/>
+                        <p:outputLabel value="#{bundle.CreateDocterceroLabel_fechaexpdocalimentos}" for="fechaexpdocalimentos" />
+                        <p:calendar id="fechaexpdocalimentos" pattern="MM/dd/yyyy" value="#{docterceroController.selected.fechaexpdocalimentos}" title="#{bundle.EditDocterceroTitle_fechaexpdocalimentos}" required="true" requiredMessage="#{bundle.EditDocterceroRequiredMessage_fechaexpdocalimentos}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateDocterceroLabel_fechavendocalimentos}" for="fechavendocalimentos" />
+                        <p:calendar id="fechavendocalimentos" pattern="MM/dd/yyyy" value="#{docterceroController.selected.fechavendocalimentos}" title="#{bundle.EditDocterceroTitle_fechavendocalimentos}" required="true" requiredMessage="#{bundle.EditDocterceroRequiredMessage_fechavendocalimentos}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateDocterceroLabel_tercerosIdtercero}" for="tercerosIdtercero" />
+                        <p:inputText id="tercerosIdtercero" value="#{docterceroController.selected.tercerosIdtercero}" title="#{bundle.CreateDocterceroTitle_tercerosIdtercero}" required="true" requiredMessage="#{bundle.CreateDocterceroRequiredMessage_tercerosIdtercero}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{docterceroController.create}" value="#{bundle.Save}" update="display,:DocterceroListForm:datalist,:growl" oncomplete="handleSubmit(args,'DocterceroCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DocterceroCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

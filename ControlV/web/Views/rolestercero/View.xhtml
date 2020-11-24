@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RolesterceroViewDlg" widgetVar="RolesterceroViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewRolesterceroTitle}">
+            <h:form id="RolesterceroViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{rolesterceroController.selected != null}">
+                        <h:outputText value="#{bundle.ViewRolesterceroLabel_rolesterceroPK_rolesidRoles}"/>
+                        <h:outputText value="#{rolesterceroController.selected.rolesterceroPK.rolesidRoles}" title="#{bundle.ViewRolesterceroTitle_rolesterceroPK_rolesidRoles}"/>
+                        <h:outputText value="#{bundle.ViewRolesterceroLabel_rolesterceroPK_roleshasTercerocol}"/>
+                        <h:outputText value="#{rolesterceroController.selected.rolesterceroPK.roleshasTercerocol}" title="#{bundle.ViewRolesterceroTitle_rolesterceroPK_roleshasTercerocol}"/>
+                        <h:outputText value="#{bundle.ViewRolesterceroLabel_fechaAlta}"/>
+                        <h:outputText value="#{rolesterceroController.selected.fechaAlta}" title="#{bundle.ViewRolesterceroTitle_fechaAlta}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewRolesterceroLabel_enable}"/>
+                        <h:outputText value="#{rolesterceroController.selected.enable}" title="#{bundle.ViewRolesterceroTitle_enable}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="RolesterceroViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

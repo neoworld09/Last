@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PrivilegiosCreateDlg" widgetVar="PrivilegiosCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePrivilegiosTitle}">
+            <h:form id="PrivilegiosCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{privilegiosController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatePrivilegiosLabel_idPrivilegios}" for="idPrivilegios" />
+                        <p:inputText id="idPrivilegios" value="#{privilegiosController.selected.idPrivilegios}" title="#{bundle.CreatePrivilegiosTitle_idPrivilegios}" required="true" requiredMessage="#{bundle.CreatePrivilegiosRequiredMessage_idPrivilegios}"/>
+                        <p:outputLabel value="#{bundle.CreatePrivilegiosLabel_privilegios}" for="privilegios" />
+                        <p:inputText id="privilegios" value="#{privilegiosController.selected.privilegios}" title="#{bundle.CreatePrivilegiosTitle_privilegios}" />
+                        <p:outputLabel value="#{bundle.CreatePrivilegiosLabel_privilegioscol}" for="privilegioscol" />
+                        <p:inputText id="privilegioscol" value="#{privilegiosController.selected.privilegioscol}" title="#{bundle.CreatePrivilegiosTitle_privilegioscol}" required="true" requiredMessage="#{bundle.CreatePrivilegiosRequiredMessage_privilegioscol}"/>
+                        <p:outputLabel value="#{bundle.CreatePrivilegiosLabel_descripcion}" for="descripcion" />
+                        <p:inputTextarea rows="4" cols="30" id="descripcion" value="#{privilegiosController.selected.descripcion}" title="#{bundle.CreatePrivilegiosTitle_descripcion}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{privilegiosController.create}" value="#{bundle.Save}" update="display,:PrivilegiosListForm:datalist,:growl" oncomplete="handleSubmit(args,'PrivilegiosCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PrivilegiosCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

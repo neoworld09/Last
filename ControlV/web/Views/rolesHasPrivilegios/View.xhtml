@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RolesHasPrivilegiosViewDlg" widgetVar="RolesHasPrivilegiosViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewRolesHasPrivilegiosTitle}">
+            <h:form id="RolesHasPrivilegiosViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{rolesHasPrivilegiosController.selected != null}">
+                        <h:outputText value="#{bundle.ViewRolesHasPrivilegiosLabel_rolesHasPrivilegiosPK_privilegiosidPrivilegios}"/>
+                        <h:outputText value="#{rolesHasPrivilegiosController.selected.rolesHasPrivilegiosPK.privilegiosidPrivilegios}" title="#{bundle.ViewRolesHasPrivilegiosTitle_rolesHasPrivilegiosPK_privilegiosidPrivilegios}"/>
+                        <h:outputText value="#{bundle.ViewRolesHasPrivilegiosLabel_rolesHasPrivilegiosPK_rolesidRoles}"/>
+                        <h:outputText value="#{rolesHasPrivilegiosController.selected.rolesHasPrivilegiosPK.rolesidRoles}" title="#{bundle.ViewRolesHasPrivilegiosTitle_rolesHasPrivilegiosPK_rolesidRoles}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="RolesHasPrivilegiosViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

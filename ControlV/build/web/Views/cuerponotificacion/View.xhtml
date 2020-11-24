@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CuerponotificacionViewDlg" widgetVar="CuerponotificacionViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCuerponotificacionTitle}">
+            <h:form id="CuerponotificacionViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cuerponotificacionController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCuerponotificacionLabel_idcuerponotificacion}"/>
+                        <h:outputText value="#{cuerponotificacionController.selected.idcuerponotificacion}" title="#{bundle.ViewCuerponotificacionTitle_idcuerponotificacion}"/>
+                        <h:outputText value="#{bundle.ViewCuerponotificacionLabel_concepto}"/>
+                        <h:outputText value="#{cuerponotificacionController.selected.concepto}" title="#{bundle.ViewCuerponotificacionTitle_concepto}"/>
+                        <h:outputText value="#{bundle.ViewCuerponotificacionLabel_adjunto}"/>
+                        <h:outputText value="#{cuerponotificacionController.selected.adjunto}" title="#{bundle.ViewCuerponotificacionTitle_adjunto}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CuerponotificacionViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

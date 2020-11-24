@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TipomovimientoViewDlg" widgetVar="TipomovimientoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTipomovimientoTitle}">
+            <h:form id="TipomovimientoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tipomovimientoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTipomovimientoLabel_idtipomovimiento}"/>
+                        <h:outputText value="#{tipomovimientoController.selected.idtipomovimiento}" title="#{bundle.ViewTipomovimientoTitle_idtipomovimiento}"/>
+                        <h:outputText value="#{bundle.ViewTipomovimientoLabel_tiposalida}"/>
+                        <h:outputText value="#{tipomovimientoController.selected.tiposalida}" title="#{bundle.ViewTipomovimientoTitle_tiposalida}"/>
+                        <h:outputText value="#{bundle.ViewTipomovimientoLabel_tipoingreso}"/>
+                        <h:outputText value="#{tipomovimientoController.selected.tipoingreso}" title="#{bundle.ViewTipomovimientoTitle_tipoingreso}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TipomovimientoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

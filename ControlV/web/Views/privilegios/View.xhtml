@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PrivilegiosViewDlg" widgetVar="PrivilegiosViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewPrivilegiosTitle}">
+            <h:form id="PrivilegiosViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{privilegiosController.selected != null}">
+                        <h:outputText value="#{bundle.ViewPrivilegiosLabel_idPrivilegios}"/>
+                        <h:outputText value="#{privilegiosController.selected.idPrivilegios}" title="#{bundle.ViewPrivilegiosTitle_idPrivilegios}"/>
+                        <h:outputText value="#{bundle.ViewPrivilegiosLabel_privilegios}"/>
+                        <h:outputText value="#{privilegiosController.selected.privilegios}" title="#{bundle.ViewPrivilegiosTitle_privilegios}"/>
+                        <h:outputText value="#{bundle.ViewPrivilegiosLabel_privilegioscol}"/>
+                        <h:outputText value="#{privilegiosController.selected.privilegioscol}" title="#{bundle.ViewPrivilegiosTitle_privilegioscol}"/>
+                        <h:outputText value="#{bundle.ViewPrivilegiosLabel_descripcion}"/>
+                        <h:outputText value="#{privilegiosController.selected.descripcion}" title="#{bundle.ViewPrivilegiosTitle_descripcion}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PrivilegiosViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="NotificacionViewDlg" widgetVar="NotificacionViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewNotificacionTitle}">
+            <h:form id="NotificacionViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{notificacionController.selected != null}">
+                        <h:outputText value="#{bundle.ViewNotificacionLabel_idnoti}"/>
+                        <h:outputText value="#{notificacionController.selected.idnoti}" title="#{bundle.ViewNotificacionTitle_idnoti}"/>
+                        <h:outputText value="#{bundle.ViewNotificacionLabel_tiponotificacionIdtiponotificacion}"/>
+                        <h:outputText value="#{notificacionController.selected.tiponotificacionIdtiponotificacion}" title="#{bundle.ViewNotificacionTitle_tiponotificacionIdtiponotificacion}"/>
+                        <h:outputText value="#{bundle.ViewNotificacionLabel_cuerponotificacionIdcuerponotificacion}"/>
+                        <h:outputText value="#{notificacionController.selected.cuerponotificacionIdcuerponotificacion}" title="#{bundle.ViewNotificacionTitle_cuerponotificacionIdcuerponotificacion}"/>
+                        <h:outputText value="#{bundle.ViewNotificacionLabel_terceroreceptor}"/>
+                        <h:outputText value="#{notificacionController.selected.terceroreceptor}" title="#{bundle.ViewNotificacionTitle_terceroreceptor}"/>
+                        <h:outputText value="#{bundle.ViewNotificacionLabel_fechaenvionoti}"/>
+                        <h:outputText value="#{notificacionController.selected.fechaenvionoti}" title="#{bundle.ViewNotificacionTitle_fechaenvionoti}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewNotificacionLabel_tercerosIdtercero}"/>
+                        <h:outputText value="#{notificacionController.selected.tercerosIdtercero}" title="#{bundle.ViewNotificacionTitle_tercerosIdtercero}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="NotificacionViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

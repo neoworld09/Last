@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TercerosCreateDlg" widgetVar="TercerosCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTercerosTitle}">
+            <h:form id="TercerosCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tercerosController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTercerosLabel_idtercero}" for="idtercero" />
+                        <p:inputText id="idtercero" value="#{tercerosController.selected.idtercero}" title="#{bundle.CreateTercerosTitle_idtercero}" required="true" requiredMessage="#{bundle.CreateTercerosRequiredMessage_idtercero}"/>
+                        <p:outputLabel value="#{bundle.CreateTercerosLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{tercerosController.selected.nombre}" title="#{bundle.CreateTercerosTitle_nombre}" required="true" requiredMessage="#{bundle.CreateTercerosRequiredMessage_nombre}"/>
+                        <p:outputLabel value="#{bundle.CreateTercerosLabel_apellido}" for="apellido" />
+                        <p:inputText id="apellido" value="#{tercerosController.selected.apellido}" title="#{bundle.CreateTercerosTitle_apellido}" required="true" requiredMessage="#{bundle.CreateTercerosRequiredMessage_apellido}"/>
+                        <p:outputLabel value="#{bundle.CreateTercerosLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{tercerosController.selected.email}" title="#{bundle.CreateTercerosTitle_email}" required="true" requiredMessage="#{bundle.CreateTercerosRequiredMessage_email}"/>
+                        <p:outputLabel value="#{bundle.CreateTercerosLabel_teloficina}" for="teloficina" />
+                        <p:inputText id="teloficina" value="#{tercerosController.selected.teloficina}" title="#{bundle.CreateTercerosTitle_teloficina}" />
+                        <p:outputLabel value="#{bundle.CreateTercerosLabel_celular}" for="celular" />
+                        <p:inputText id="celular" value="#{tercerosController.selected.celular}" title="#{bundle.CreateTercerosTitle_celular}" required="true" requiredMessage="#{bundle.CreateTercerosRequiredMessage_celular}"/>
+                        <p:outputLabel value="#{bundle.CreateTercerosLabel_tipoterceroIdtipoter}" for="tipoterceroIdtipoter" />
+                        <p:inputText id="tipoterceroIdtipoter" value="#{tercerosController.selected.tipoterceroIdtipoter}" title="#{bundle.CreateTercerosTitle_tipoterceroIdtipoter}" required="true" requiredMessage="#{bundle.CreateTercerosRequiredMessage_tipoterceroIdtipoter}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tercerosController.create}" value="#{bundle.Save}" update="display,:TercerosListForm:datalist,:growl" oncomplete="handleSubmit(args,'TercerosCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TercerosCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

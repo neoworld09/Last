@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TipoterceroEditDlg" widgetVar="TipoterceroEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTipoterceroTitle}">
+            <h:form id="TipoterceroEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tipoterceroController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTipoterceroLabel_idtipoter}" for="idtipoter" />
+                        <p:inputText id="idtipoter" value="#{tipoterceroController.selected.idtipoter}" title="#{bundle.EditTipoterceroTitle_idtipoter}" required="true" requiredMessage="#{bundle.EditTipoterceroRequiredMessage_idtipoter}"/>
+                        <p:outputLabel value="#{bundle.EditTipoterceroLabel_tipoter}" for="tipoter" />
+                        <p:inputText id="tipoter" value="#{tipoterceroController.selected.tipoter}" title="#{bundle.EditTipoterceroTitle_tipoter}" />
+                        <p:outputLabel value="#{bundle.EditTipoterceroLabel_descripcion}" for="descripcion" />
+                        <p:inputTextarea rows="4" cols="30" id="descripcion" value="#{tipoterceroController.selected.descripcion}" title="#{bundle.EditTipoterceroTitle_descripcion}" />
+                        <p:outputLabel value="#{bundle.EditTipoterceroLabel_tipopersona}" for="tipopersona" />
+                        <p:inputText id="tipopersona" value="#{tipoterceroController.selected.tipopersona}" title="#{bundle.EditTipoterceroTitle_tipopersona}" required="true" requiredMessage="#{bundle.EditTipoterceroRequiredMessage_tipopersona}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tipoterceroController.update}" value="#{bundle.Save}" update="display,:TipoterceroListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TipoterceroEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TipoterceroEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

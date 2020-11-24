@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TipoterceroViewDlg" widgetVar="TipoterceroViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTipoterceroTitle}">
+            <h:form id="TipoterceroViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tipoterceroController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTipoterceroLabel_idtipoter}"/>
+                        <h:outputText value="#{tipoterceroController.selected.idtipoter}" title="#{bundle.ViewTipoterceroTitle_idtipoter}"/>
+                        <h:outputText value="#{bundle.ViewTipoterceroLabel_tipoter}"/>
+                        <h:outputText value="#{tipoterceroController.selected.tipoter}" title="#{bundle.ViewTipoterceroTitle_tipoter}"/>
+                        <h:outputText value="#{bundle.ViewTipoterceroLabel_descripcion}"/>
+                        <h:outputText value="#{tipoterceroController.selected.descripcion}" title="#{bundle.ViewTipoterceroTitle_descripcion}"/>
+                        <h:outputText value="#{bundle.ViewTipoterceroLabel_tipopersona}"/>
+                        <h:outputText value="#{tipoterceroController.selected.tipopersona}" title="#{bundle.ViewTipoterceroTitle_tipopersona}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TipoterceroViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
