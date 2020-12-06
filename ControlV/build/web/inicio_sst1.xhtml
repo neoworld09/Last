@@ -10,44 +10,56 @@
     </h:head>
 
     <h:body>
-
         <p:growl id="growl" life="3000" />
 
         <p:layout fullPage="true">
             <p:layoutUnit position="north" size="65" header="#{bundle.AppName}">
-                <h:form id="menuForm">
+                <!--
                     <p:menubar>
                         <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
                         <p:submenu label="#{bundle.Maintenance}">
                             <p:menuitem value="Cuerponotificacion" outcome="/Views/cuerponotificacion/List" />
                             <p:menuitem value="Doctercero" outcome="/Views/doctercero/List" />
-                            <p:menuitem value="Docvehiculo" outcome="/Views/docvehiculo/List" />
-                            <p:menuitem value="Notificacion" outcome="/Views/notificacion/List" />
-                            <p:menuitem value="Privilegios" outcome="/Views/privilegios/List" />
-                            <p:menuitem value="Producto" outcome="/Views/producto/List" />
-                            <p:menuitem value="Registro" outcome="/Views/registro/List" />
-                            <p:menuitem value="Registroproductos" outcome="/Views/registroproductos/List" />
-                            <p:menuitem value="Roles" outcome="/Views/roles/List" />
-                            <p:menuitem value="RolesHasPrivilegios" outcome="/Views/rolesHasPrivilegios/List" />
-                            <p:menuitem value="Rolestercero" outcome="/Views/rolestercero/List" />
-                            <p:menuitem value="Terceros" outcome="/Views/terceros/List" />
-                            <p:menuitem value="Tipomovimiento" outcome="/Views/tipomovimiento/List" />
-                            <p:menuitem value="Tiponotificacion" outcome="/Views/tiponotificacion/List" />
-                            <p:menuitem value="Tipotercero" outcome="/Views/tipotercero/List" />
-                            <p:menuitem value="Vehiculo" outcome="/Views/vehiculo/List" />
                         </p:submenu>
                     </p:menubar>
-                </h:form>
-            </p:layoutUnit>
+                </h:form>-->
+   
 
-            <p:layoutUnit position="south" size="60">
-                <ui:insert name="footer"/>
             </p:layoutUnit>
-
+          
             <p:layoutUnit position="center">
                 <ui:insert name="body"/>
             </p:layoutUnit>
+            
+                                            <p:layoutUnit position="west" size="150">
+                                                <ui:insert name="prueba menu vertica"/>
+                                  
+                                                
 
+                                                
+                                                <h:form>
+                                                <p:menu>
+                                                    <p:submenu label="Información de Conductor">
+                                                        <p:menuitem value="Crear nuevo" action="#{menuView.save}"  icon="pi pi-save" />
+                                                        <p:menuitem value="Consultar" action="#{menuView.update}"  icon="pi pi-refresh"/>
+                                                    </p:submenu>
+                                                </p:menu>
+                                                    </h:form>
+                                                
+                                                
+                                                
+                                                
+                                                
+                                                
+                                                
+                                            </p:layoutUnit>
+            
+            <p:layoutUnit position="south" size="60">
+                <ui:insert name="footer"/>
+                <h2>
+                    Este es el footer
+                </h2>
+            </p:layoutUnit>
         </p:layout>
 
     </h:body>
