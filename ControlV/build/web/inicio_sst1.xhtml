@@ -2,7 +2,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
-    
+
     <h:head>
         <title><ui:insert name="title">Crear Conductor</ui:insert></title>
         <h:outputStylesheet library="css" name="jsfcrud.css"/>
@@ -11,7 +11,6 @@
 
     <h:body>
         <p:growl id="growl" life="3000" />
-
         <p:layout fullPage="true">
             <p:layoutUnit position="north" size="65" header="#{bundle.AppName}">
                 <!--
@@ -23,37 +22,21 @@
                         </p:submenu>
                     </p:menubar>
                 </h:form>-->
-   
-
             </p:layoutUnit>
-          
             <p:layoutUnit position="center">
                 <ui:insert name="body"/>
             </p:layoutUnit>
-            
-                                            <p:layoutUnit position="west" size="150">
-                                                <ui:insert name="prueba menu vertica"/>
-                                  
-                                                
-
-                                                
-                                                <h:form>
-                                                <p:menu>
-                                                    <p:submenu label="Información de Conductor">
-                                                        <p:menuitem value="Crear nuevo" action="#{menuView.save}"  icon="pi pi-save" />
-                                                        <p:menuitem value="Consultar" action="#{menuView.update}"  icon="pi pi-refresh"/>
-                                                    </p:submenu>
-                                                </p:menu>
-                                                    </h:form>
-                                                
-                                                
-                                                
-                                                
-                                                
-                                                
-                                                
-                                            </p:layoutUnit>
-            
+            <p:layoutUnit position="west" size="150">
+                <ui:insert name="prueba menu vertica"/>
+                <h:form>
+                    <p:menu>
+                        <p:submenu label="Información de Conductor">
+                            <p:menuitem value="Crear nuevo" action="#{menuView.save}"  icon="pi pi-save" />
+                            <p:menuitem value="Consultar" action="#{menuView.update}"  icon="pi pi-refresh"/>
+                        </p:submenu>
+                    </p:menu>
+                </h:form>
+            </p:layoutUnit>
             <p:layoutUnit position="south" size="60">
                 <ui:insert name="footer"/>
                 <h2>
@@ -61,8 +44,6 @@
                 </h2>
             </p:layoutUnit>
         </p:layout>
-
     </h:body>
-
 </html>
 
